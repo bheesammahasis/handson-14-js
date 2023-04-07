@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>INHERITANCE AND PROTOTYPE </h1>
+    <div class="d1">learning</div> 
+    <div class="d2">prepbytes</div>
+    <pre class="ques">
+     question no.1=Create 2 objects - parent and child. Attach methods to parent 
+      and use those methods in child object using parents prototype.
+    </pre>
+    <pre class="ans">
+        answer no.1=
+         const parent ={
+            fname:"prepbytes",
+            lname:"EA21",
+            fullname: function abc(){
+                console.log(this.fname+" "+this.lname);
+            }
+         }
+         const child = {
+            __proto__:parent
+         }
+         child.fullname();
+
+         answer= prepbytes EA21
+    </pre>
+    <pre class="ques">
+        question no.2=Write code to explain prototype chaining.
+    </pre>
+    <pre class="ans">
+        answer no.2=
+           const obj1 ={
+             name:'prepbytes'
+           }
+           const obj2 ={
+            __proto__:obj1,
+             lname:'EA21'
+           }
+           const obj3 ={
+            __proto__:obj2,
+            age:'20',
+           }
+           console.log(obj3.name);
+
+           output=prepbytes
+    </pre>
+    
+    <pre class="ques">
+        question no.3=
+        Add a method to calculate sum of all elements in Array in array's 
+         protype, use that method to calculate sum for multiple arrays. 
+    </pre>
+    <pre class="ans">
+        answer no.3=
+          const Add = {
+            sum:function(arr){
+                let result = 0;
+                for(let i=0;i< arr.length; i++){
+                    result += arr[i];
+                }
+                console.log(result);
+            }
+          }
+          Add.sum([1,2,3,4,5]);
+          OUTPUT=15
+          // second method
+          Array.prototype.sum= function(){
+            let result =0;
+            for(let i=0;i< this.length;i++){
+                result+=this[i];
+            }
+            return result;
+          };
+          let N1 =[6,8,9];
+          let N2 =[7,8,6];
+          let addition = N1.sum()+N2.sum()
+          console.log(addition);
+          OUTPUT=44
+    </pre>
+    <pre class="ques">
+        question no.4=
+        Write a JavaScript function to retrieve all the names of object's own 
+         and inherited properties.
+    </pre>
+    <pre class="ans">
+        answer no.4=
+        function allKeys(obj) {
+            if (!isObject(obj)) return [];
+            var keys = [];
+            for (var key in obj) keys.push(key);
+            return keys;
+        }
+        function isObject(obj) 
+        {
+            var type = typeof obj;
+            return type === 'function' || type === 'object' && !!obj;
+          }
+        function Student(name) {
+          this.name = name;
+        }
+        Student.prototype.rollno = true;
+        console.log(allKeys(new Student("om")));
+      <img src="ans4.png">
+    </pre>
+
+</body>
+</html>
